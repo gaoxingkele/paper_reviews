@@ -1,0 +1,26 @@
+# secrets
+.env
+.env.cloubic
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# project IO
+output/
+data/*
+!data/.gitkeep
+
+# large reference downloads (keep our analysis, not the raw papers/repos)
+references/Researcher/
+references/*.pdf
+references/*.html
+references/openaireview/
+
+# os
+.DS_Store
+Thumbs.db

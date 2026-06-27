@@ -1,0 +1,106 @@
+# IEEE Access 期刊画像
+# 依据：IEEE Access 作者/审稿规范 + 本项目整理的内容向审稿要求
+#   (D:\BaiduSyncdisk\2026-06\科东论文3篇\审稿要求.md)
+# 特点：快速评审的多学科开放获取期刊，重「技术正确性/原创性/可复现」，
+#       不以"影响力/突破性"为录用门槛，但要求至少两份评审、贡献明确且证据充分。
+
+venue: ieee_access
+full_name: "IEEE Access"
+level: standard
+aims_scope: >
+  IEEE Access 是 IEEE 的多学科、开放获取、快速评审期刊，覆盖工程与技术各领域。
+  录用标准重在：原创且未一稿多投、技术与方法正确、实验/证据充分支撑结论、可复现、
+  引用相关前序工作、表述清晰。不要求颠覆性创新，但增量必须明确且自成一文。
+
+decision_threshold: 6.0
+score_distribution:
+  accept_mean: 6.5
+  reject_mean: 4.0
+
+dimensions:
+  - key: novelty
+    label: 原创性与贡献
+    description: >
+      工作是否原创、贡献是否明确（1–3 条核心贡献）；相对最接近的现有工作差异是否
+      实质而非表层（换数据集/调参/改名）；标题与摘要的主张是否被正文证据支撑（防 overclaim）。
+      注意：IEEE Access 不要求突破性创新，但"明显的增量延伸"需说明其独立价值。
+    scale_max: 10
+    weight: 1.3
+    strictness: 1.0
+    agent: novelty
+
+  - key: soundness
+    label: 技术正确性
+    description: >
+      方法描述是否完整自洽、符号在使用前定义；关键假设是否明确且合理；推导/证明是否正确；
+      设计选择是否有依据；复杂度是否分析。
+    scale_max: 10
+    weight: 1.4
+    strictness: 1.1
+    agent: soundness
+
+  - key: experiments
+    label: 实验与验证
+    description: >
+      实验是否支撑每一条主张；是否与强基线/SOTA 公平对比；数据集是否合适且说明划分/预处理
+      （防测试集泄漏）；指标是否恰当；是否多次运行报告均值±方差并做显著性检验；是否有消融；
+      是否诚实报告局限与失败案例。反常优异结果须更高证明标准。
+    scale_max: 10
+    weight: 1.4
+    strictness: 1.1
+    agent: experiments
+
+  - key: reproducibility
+    label: 可复现性
+    description: >
+      算法/超参/训练设置/硬件是否充分披露；是否提供代码/数据或说明不提供的合理原因；
+      报告数字与图表是否相互一致、可追溯到具体设置。
+    scale_max: 10
+    weight: 1.1
+    agent: reproducibility
+
+  - key: related_work
+    label: 相关工作与文献
+    description: >
+      是否引用相关前序工作尤其最接近的竞争方法与最新进展；综述是否客观、有无选择性忽略；
+      是否清楚本文相对它们的定位；有无关键文献缺失或过度自引。
+    scale_max: 10
+    weight: 0.9
+    agent: related_work
+
+  - key: clarity
+    label: 结论与表述
+    description: >
+      结论是否由结果直接支撑、不夸大、不复述摘要；是否讨论局限与适用边界；
+      逻辑组织（问题→方法→证据→结论）是否完整清晰；术语使用是否准确。
+      （不评字体/排版/图片格式等编辑性问题。）
+    scale_max: 10
+    weight: 0.8
+    agent: clarity
+
+  - key: ethics
+    label: 学术诚信与合规
+    description: >
+      有无抄袭/自我抄袭/重复发表/数据造假迹象；图表是否被选择性裁剪；利益冲突/资助/伦理审批
+      是否披露；是否一稿多投（IEEE 要求披露所有在投与已发表成果）。
+    scale_max: 10
+    weight: 0.6
+    agent: ethics
+
+policies:
+  ai_use_disclosure: true
+  ethics_required: true
+  no_concurrent_submission: true
+  min_reviews: 2
+  note: "IEEE Access 不发表会议记录；仅描述在研工作/最新进展而无完整贡献的稿件不适合发表。"
+
+exemplars:
+  - label: accepted
+    score: 7
+    note: "贡献明确、与强基线对比充分、可复现、文献定位清楚的稿件"
+  - label: major_revision
+    score: 5
+    note: "思路有价值但缺关键对比/统计显著性/消融，或创新阐述不足"
+  - label: rejected
+    score: 3
+    note: "增量有限、实验不支撑主张、存在方法缺陷或诚信问题"

@@ -1,0 +1,76 @@
+# 期刊画像模板 —— 复制本文件为 <venue>.yaml 并填写。
+# 这是驱动整套审稿流水线的一等输入：换期刊只改 YAML，代码不动。
+
+venue: example_journal            # 文件名/标识（小写下划线）
+full_name: "Example Journal"      # 全称（进 prompt）
+level: standard                   # top | strong | standard | regional（调节严格度）
+aims_scope: >
+  期刊定位与收稿范围。用于 VenueMatch 与桌面初筛判断主题契合度。
+
+decision_threshold: 6.0           # 大致录用线（参考，用于 meta-review 与校准）
+
+# 该刊历史分数分布，供 CalibrationAgent 去偏（可留空）
+score_distribution:
+  accept_mean: 6.5
+  reject_mean: 4.0
+
+# 评审维度（rubric）。enabled=false 可关闭某维度；strictness>1 更挑剔；
+# weight 影响聚合权重；agent 指定用哪套模型配置（见 config/agents.yaml）。
+dimensions:
+  - key: novelty
+    label: 新颖性与贡献
+    description: 与最接近的现有工作相比，贡献是否本质性创新；是否避免过度包装。
+    scale_max: 10
+    weight: 1.5
+    strictness: 1.0
+    agent: novelty
+  - key: soundness
+    label: 技术正确性
+    description: 方法/推导/假设是否严密自洽，有无技术缺陷。
+    scale_max: 10
+    weight: 1.3
+    agent: soundness
+  - key: experiments
+    label: 实验充分性
+    description: 是否与强基线公平对比、统计显著、含消融、覆盖核心主张。
+    scale_max: 10
+    weight: 1.3
+    agent: experiments
+  - key: reproducibility
+    label: 可复现性
+    description: 细节/代码/数据是否足以复现结果。
+    scale_max: 10
+    weight: 1.0
+    agent: reproducibility
+  - key: related_work
+    label: 相关工作
+    description: 文献覆盖是否充分、引用是否恰当、定位是否清楚。
+    scale_max: 10
+    weight: 0.8
+    agent: related_work
+  - key: clarity
+    label: 表述与组织
+    description: 结构、论证链条、图表是否清晰（不评排版细节）。
+    scale_max: 10
+    weight: 0.7
+    agent: clarity
+  - key: ethics
+    label: 伦理与合规
+    description: 学术诚信、利益冲突、伦理审批、AI 使用披露。
+    scale_max: 10
+    weight: 0.5
+    agent: ethics
+
+policies:
+  ai_use_disclosure: true
+  max_pages: null
+  ethics_required: false
+
+# 评分锚点样例（few-shot 校准评审尺度，可留空）
+exemplars:
+  - label: accepted
+    score: 7
+    note: "示例：贡献明确、实验充分的被接收稿件特征"
+  - label: rejected
+    score: 3
+    note: "示例：增量有限、实验不支撑主张的被拒稿件特征"

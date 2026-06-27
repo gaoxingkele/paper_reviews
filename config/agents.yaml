@@ -1,0 +1,60 @@
+# 智能体 → 模型映射。provider 名走 .env.cloubic 的 Cloubic 路由（claude/gemini/openai/glm/qwen/deepseek）
+# 或直连（kimi/doubao/grok）。reasoning=true 时取 *_REASONING_MODEL 链。
+# voters>1 或配置 extra_providers 时启用多模型投票（关键维度抗偏见）。
+
+default:
+  provider: claude
+  reasoning: false
+  temperature: 0.3
+  voters: 1
+
+# --- 轻量阶段：用快/省模型 ---
+desk_screen:
+  provider: deepseek
+  temperature: 0.0
+venue_match:
+  provider: claude
+  temperature: 0.2
+
+# --- 核心维度评审：强模型；新颖性/可复现做多模型投票 ---
+novelty:
+  provider: claude
+  reasoning: true
+  temperature: 0.4
+  voters: 2
+  extra_providers: [gemini, openai]
+soundness:
+  provider: claude
+  reasoning: true
+  temperature: 0.2
+experiments:
+  provider: openai
+  reasoning: true
+  temperature: 0.2
+reproducibility:
+  provider: deepseek
+  temperature: 0.1
+related_work:
+  provider: gemini
+  temperature: 0.3
+clarity:
+  provider: qwen
+  temperature: 0.3
+ethics:
+  provider: claude
+  temperature: 0.0
+
+# --- 核验 / 聚合 / 稽核 ---
+verifier:
+  provider: claude
+  reasoning: true
+  temperature: 0.0
+  voters: 2
+  extra_providers: [openai]
+meta_review:
+  provider: claude
+  reasoning: true
+  temperature: 0.2
+review_critic:
+  provider: deepseek
+  temperature: 0.0
