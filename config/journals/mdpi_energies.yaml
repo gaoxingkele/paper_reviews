@@ -1,0 +1,138 @@
+# MDPI Energies 期刊画像
+# 依据：MDPI Reviewer Brochure / Review Report Form（6 维评分 + 4 档建议）+ DORA 立场。
+#   6 维：Originality/Novelty、Quality of Presentation、Scientific Soundness、
+#         Interest to the Readers、Overall Merit、English Level。
+# 与 IEEE Access 的本质差异：tiered（accept/minor/major/reject，大修常态、无一票否决），
+#   创新/价值（Novelty + Interest/Merit）显式计分故权重更高；负面结果受 DORA 保护不直接扣分，
+#   但 Interest/Overall Merit 维度会追问"这个负面结论是否足够有趣、值得读者关注"。
+
+venue: mdpi_energies
+full_name: "Energies (MDPI)"
+level: standard
+aims_scope: >
+  Energies 是 MDPI 的开放获取能源领域期刊，覆盖能源工程、电力系统、可再生能源、能效与能源经济。
+  采用结构化 6 维评分 + 4 档建议；MDPI 为 DORA 签署方，明确同时发表正面与负面结果、不人为抬高拒稿率，
+  但要求结论对读者有价值（Interest/Overall Merit）、引用以近 5 年为主且不过度自引、方法可复现、英语达标。
+
+decision_threshold: 5.5
+decision_model: tiered
+score_distribution:
+  accept_mean: 6.0
+  reject_mean: 3.5
+
+# 经验校准锚点：从 15 篇近年已发表 Energies 经济/排放调度·优化论文蒸馏（见
+# corpus/DISTILLATION_REPORT.md 与 mdpi_energies_accepted_profile.md）。
+# 已录用论文在本系统的 RRI 中位 55、区间 [14,69]——说明绝对尺度偏严：
+# RRI ≤ 55 即与多数已录用论文相当（accept/minor 区间）。scoring 用此分布给出"接受分布百分位"。
+accept_rri_stats:
+  n: 15
+  median: 55
+  p25: 49
+  p75: 68
+  min: 14
+  max: 69
+  distribution: [14, 32, 40, 49, 50, 51, 53, 55, 55, 65, 68, 68, 68, 68, 69]
+acceptance_profile: mdpi_energies_accepted_profile.md
+
+dimensions:
+  - key: novelty
+    label: 原创性与贡献
+    description: >
+      对应 MDPI Originality/Novelty。工作是否原创、贡献是否明确；相对最接近现有工作差异是否实质；
+      标题/摘要主张是否被证据支撑。MDPI 下创新度是显式计分维度（权重高于 IEEE Access）。
+    scale_max: 10
+    # 校准下调（1.0→0.85）：已发表 Energies 论文 novelty 平均风险仍被打到 2.93，
+    # 说明系统对创新性过苛；Energies 接受'增量但扎实/机制组合'工作（DORA + 非-SOTA）。
+    strictness: 0.85
+    weight: 1.3
+    agent: novelty
+    risk_weight: 0.20
+
+  - key: soundness
+    label: 技术正确性
+    description: >
+      对应 MDPI Scientific Soundness。方法是否完整自洽、假设是否合理、推导/证明是否正确、设计选择是否有依据。
+    scale_max: 10
+    weight: 1.4
+    strictness: 1.0
+    agent: soundness
+    risk_weight: 0.18
+
+  - key: experiments
+    label: 实验与验证
+    description: >
+      对应 Scientific Soundness（实验侧）。实验是否支撑每条主张、基线是否公平、数据划分是否防泄漏、
+      是否多次运行报告均值±方差并做显著性检验、是否有消融、是否诚实报告局限。
+      负面/消融反转结果须确证为"有效假设下的负面结果"，而非实验不充分的伪负面。
+    scale_max: 10
+    weight: 1.3
+    strictness: 1.0
+    agent: experiments
+    risk_weight: 0.12
+
+  - key: reproducibility
+    label: 可复现性
+    description: >
+      对应 reproducible methods + data availability。算法/超参/设置/硬件是否充分披露；
+      是否提供代码/数据或 data availability statement；报告数字与图表是否一致可追溯。
+    scale_max: 10
+    weight: 1.1
+    agent: reproducibility
+    risk_weight: 0.12
+
+  - key: related_work
+    label: 相关工作与文献
+    description: >
+      对应 MDPI 引用规范。是否引用最接近的竞争方法与最新进展；本文定位是否清楚；
+      ★引用是否以近 5 年为主、是否过度自引（excessive self-citation 是 MDPI 显式考核项）。
+    scale_max: 10
+    weight: 0.9
+    agent: related_work
+    risk_weight: 0.10
+
+  - key: clarity
+    label: 价值/读者兴趣与表述
+    description: >
+      对应 MDPI Interest to the Readers + Overall Merit + Quality of Presentation。
+      ★这个（可能为负面/非-SOTA 的）结论对读者有什么价值、是否值得关注（Interest/Merit）；
+      结论是否由结果直接支撑、是否讨论局限与适用边界；逻辑组织与表述是否清晰、图表是否可读。
+    scale_max: 10
+    # 校准下调（1.0→0.9）：已发表论文 clarity/价值维度平均风险 2.35 仍偏高。
+    strictness: 0.9
+    weight: 1.0
+    agent: clarity
+    risk_weight: 0.18
+
+  - key: ethics
+    label: 学术诚信与合规
+    description: >
+      有无抄袭/自我抄袭/重复发表/数据造假迹象；图表是否被选择性裁剪；利益冲突/资助/伦理审批/
+      data availability 是否披露。
+    scale_max: 10
+    weight: 0.6
+    agent: ethics
+    risk_weight: 0.10
+
+policies:
+  ai_use_disclosure: true
+  ethics_required: true
+  data_availability_required: true
+  dora_signatory: true
+  note: "MDPI 为 DORA 签署方，接受科学正确的负面结果；大修是常态，reject 限于'严重缺陷且无原创贡献'。"
+
+# MDPI 为 tiered 模型，不设一票否决；致命问题导向 Major Revision 而非拒稿。
+hard_gates: []
+
+exemplars:
+  # 锚点经 15 篇已发表 Energies 正样本校准（RRI 中位 55）。已录用论文常见画像：
+  # 单一/少数算例（IES/微网/IEEE 30-bus）、经典 MOEA/元启发基线（PSO/DE/GA/SSA）、
+  # 创新为"机制组合/场景适配"的增量工作、含数据可用性声明——这类即属可接受。
+  - label: accept_minor
+    score: 7
+    note: "技术正确、实验支撑结论、近5年文献、含数据可用性；创新即使为增量/机制组合也可接受（DORA）。本系统 RRI 多落 14–50"
+  - label: major_revision
+    score: 5
+    note: "可挽救：价值叙事不足/缺关键对比或显著性/自引偏多/数据可用性缺失。已发表样本多数落此档，RRI ~50–69"
+  - label: reject
+    score: 2
+    note: "严重缺陷且无原创贡献（MDPI 拒稿的高门槛定义）"

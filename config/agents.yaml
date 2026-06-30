@@ -7,6 +7,9 @@ default:
   reasoning: false
   temperature: 0.3
   voters: 1
+  # 跨 provider 兜底链：某 provider 的整条模型链耗尽（网关抖动/模型未开通）时按序回退，
+  # 避免整维度被丢弃。claude 系当前最稳，放最后做最终兜底。
+  fallbacks: [claude]
 
 # --- 轻量阶段：用快/省模型 ---
 desk_screen:

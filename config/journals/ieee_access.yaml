@@ -13,6 +13,9 @@ aims_scope: >
   引用相关前序工作、表述清晰。不要求颠覆性创新，但增量必须明确且自成一文。
 
 decision_threshold: 6.0
+# IEEE Access 是二元 accept/reject 模型（无大修缓冲），故 decision_model=binary，
+# 并启用一票否决硬门槛（见文件末 hard_gates）。RRI 与风险分档由 scoring.py 确定性计算。
+decision_model: binary
 score_distribution:
   accept_mean: 6.5
   reject_mean: 4.0
@@ -28,6 +31,7 @@ dimensions:
     weight: 1.3
     strictness: 1.0
     agent: novelty
+    risk_weight: 0.12
 
   - key: soundness
     label: 技术正确性
@@ -38,6 +42,7 @@ dimensions:
     weight: 1.4
     strictness: 1.1
     agent: soundness
+    risk_weight: 0.24
 
   - key: experiments
     label: 实验与验证
@@ -49,6 +54,7 @@ dimensions:
     weight: 1.4
     strictness: 1.1
     agent: experiments
+    risk_weight: 0.20
 
   - key: reproducibility
     label: 可复现性
@@ -58,6 +64,7 @@ dimensions:
     scale_max: 10
     weight: 1.1
     agent: reproducibility
+    risk_weight: 0.16
 
   - key: related_work
     label: 相关工作与文献
@@ -67,6 +74,7 @@ dimensions:
     scale_max: 10
     weight: 0.9
     agent: related_work
+    risk_weight: 0.12
 
   - key: clarity
     label: 结论与表述
@@ -77,6 +85,7 @@ dimensions:
     scale_max: 10
     weight: 0.8
     agent: clarity
+    risk_weight: 0.10
 
   - key: ethics
     label: 学术诚信与合规
@@ -86,6 +95,7 @@ dimensions:
     scale_max: 10
     weight: 0.6
     agent: ethics
+    risk_weight: 0.06
 
 policies:
   ai_use_disclosure: true
@@ -104,3 +114,26 @@ exemplars:
   - label: rejected
     score: 3
     note: "增量有限、实验不支撑主张、存在方法缺陷或诚信问题"
+
+# 一票否决硬门槛（仅二元模型 IEEE Access）：任一 finding 命中且 severity≥3 → RRI 直接置 ≥75（高风险/拒）。
+# 依据 IEEE Access 官方红线（Submission/Stages of Peer Review Guidelines）。审稿 Agent 命中时在
+# finding.hard_gate=true 标注；scoring.py 据此触发。这些维度上 MDPI 不触发否决（导向大修）。
+hard_gates:
+  - id: english_fatal
+    dimension: clarity
+    rule: "英语语法硬伤（官方：poor grammar → immediately rejected）"
+  - id: technical_fatal
+    dimension: soundness
+    rule: "技术致命错误：方法不成立 / 结论与数据矛盾 / 实验设计无效"
+  - id: unfair_comparison_fatal
+    dimension: experiments
+    rule: "不公平对比且无法补救（强化自己/弱化基线、不同预算）"
+  - id: retracted_refs
+    dimension: ethics
+    rule: "含撤稿文献且影响有效性"
+  - id: not_distinct
+    dimension: novelty
+    rule: "与既往发表无可辨识差异 / 一稿多投（not distinct）"
+  - id: out_of_scope
+    dimension: novelty
+    rule: "明显超出期刊 scope"

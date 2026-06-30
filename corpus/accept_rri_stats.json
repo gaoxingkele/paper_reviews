@@ -1,0 +1,35 @@
+{
+  "n": 15,
+  "rri_mean": 53.7,
+  "rri_median": 55,
+  "rri_p25": 49,
+  "rri_p75": 68,
+  "rri_min": 14,
+  "rri_max": 69,
+  "rri_sorted": [
+    14,
+    32,
+    40,
+    49,
+    50,
+    51,
+    53,
+    55,
+    55,
+    65,
+    68,
+    68,
+    68,
+    68,
+    69
+  ],
+  "dim_means": {
+    "novelty": 2.93,
+    "soundness": 2.03,
+    "experiments": 1.85,
+    "reproducibility": 1.75,
+    "related_work": 1.85,
+    "clarity": 2.35,
+    "ethics": 1.59
+  }
+}

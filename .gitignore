@@ -20,6 +20,12 @@ references/Researcher/
 references/*.pdf
 references/*.html
 references/openaireview/
+references/review_simulator_extracted/
+
+# copyrighted full-text corpus — do NOT publish papers; keep only derived analysis
+corpus/energies/
+corpus/energies_clean/
+corpus/eval/
 
 # os
 .DS_Store

@@ -111,6 +111,15 @@ def chat(
     order; raises :class:`LLMCallError` only when every model fails.
     """
     load_env()
+    # env overrides so batch runs can cap hang time (gateway can wedge sockets)
+    _t = os.getenv("PR_LLM_TIMEOUT", "").strip()
+    if _t:
+        try: timeout = float(_t)
+        except ValueError: pass
+    _r = os.getenv("PR_LLM_RETRIES", "").strip()
+    if _r:
+        try: retries = int(_r)
+        except ValueError: pass
     provider = provider.strip().lower()
     direct = _DIRECT.get(provider, {})
 

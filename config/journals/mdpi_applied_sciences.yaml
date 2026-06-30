@@ -1,0 +1,110 @@
+# MDPI Applied Sciences 期刊画像
+# 依据同 mdpi_energies（MDPI Reviewer Brochure / Review Report Form + DORA）。
+# 三刊差异为权重微调：Applied Sciences 偏"应用广度与价值"（Interest/Merit 权重略高、新颖性门槛略松）。
+
+venue: mdpi_applied_sciences
+full_name: "Applied Sciences (MDPI)"
+level: standard
+aims_scope: >
+  Applied Sciences 是 MDPI 的开放获取应用科学综合期刊，覆盖工程、计算、应用物理与交叉应用研究。
+  采用结构化 6 维评分 + 4 档建议；MDPI 为 DORA 签署方，接受科学正确的负面结果，但要求结论对读者/应用有价值、
+  引用以近 5 年为主且不过度自引、方法可复现、英语达标。相对更看重应用价值与适用广度，对纯新颖性门槛略松。
+
+decision_threshold: 5.5
+decision_model: tiered
+score_distribution:
+  accept_mean: 6.0
+  reject_mean: 3.5
+
+dimensions:
+  - key: novelty
+    label: 原创性与贡献
+    description: >
+      对应 MDPI Originality/Novelty。贡献是否明确、相对最接近工作差异是否实质；
+      Applied Sciences 对纯新颖性门槛略松，但仍需 distinct + 有应用价值。
+    scale_max: 10
+    weight: 1.2
+    strictness: 0.95
+    agent: novelty
+    risk_weight: 0.18
+
+  - key: soundness
+    label: 技术正确性
+    description: >
+      对应 Scientific Soundness。方法是否完整自洽、假设是否合理、推导/证明是否正确、设计是否有依据。
+    scale_max: 10
+    weight: 1.4
+    strictness: 1.0
+    agent: soundness
+    risk_weight: 0.18
+
+  - key: experiments
+    label: 实验与验证
+    description: >
+      实验是否支撑主张、基线是否公平、数据划分是否防泄漏、是否报告均值±方差与显著性检验、是否有消融、
+      是否诚实报告局限；负面/消融反转须确证非伪负面。
+    scale_max: 10
+    weight: 1.3
+    strictness: 1.0
+    agent: experiments
+    risk_weight: 0.14
+
+  - key: reproducibility
+    label: 可复现性
+    description: >
+      算法/超参/设置/硬件是否充分披露；是否提供代码/数据或 data availability statement；
+      报告数字与图表是否一致可追溯。
+    scale_max: 10
+    weight: 1.1
+    agent: reproducibility
+    risk_weight: 0.12
+
+  - key: related_work
+    label: 相关工作与文献
+    description: >
+      是否引用最接近竞争方法与最新进展；定位是否清楚；★引用是否近 5 年为主、是否过度自引。
+    scale_max: 10
+    weight: 0.9
+    agent: related_work
+    risk_weight: 0.10
+
+  - key: clarity
+    label: 价值/读者兴趣与表述
+    description: >
+      对应 Interest to the Readers + Overall Merit + Quality of Presentation（应用价值导向）。
+      ★结论的应用价值与适用广度是否充分、是否值得读者关注；结论是否由结果支撑、是否讨论局限；
+      逻辑与表述是否清晰、图表是否可读。
+    scale_max: 10
+    weight: 1.05
+    strictness: 1.0
+    agent: clarity
+    risk_weight: 0.18
+
+  - key: ethics
+    label: 学术诚信与合规
+    description: >
+      有无抄袭/重复发表/数据造假迹象；图表是否选择性裁剪；利益冲突/资助/伦理/data availability 是否披露。
+    scale_max: 10
+    weight: 0.6
+    agent: ethics
+    risk_weight: 0.10
+
+policies:
+  ai_use_disclosure: true
+  ethics_required: true
+  data_availability_required: true
+  dora_signatory: true
+  note: "MDPI/DORA：接受科学正确的负面结果；大修常态，reject 限于'严重缺陷且无原创贡献'。"
+
+hard_gates: []
+
+exemplars:
+  - label: accept_minor
+    score: 7
+    note: "应用价值清楚、技术 sound、对读者有价值、引用近 5 年充分、英语达标"
+  - label: major_revision
+    score: 5
+    note: "应用价值叙事不足/缺关键对比或显著性/自引偏多——大修可挽救"
+  - label: reject
+    score: 2
+    note: "严重缺陷且无原创贡献"

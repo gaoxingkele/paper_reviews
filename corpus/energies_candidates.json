@@ -1,0 +1,142 @@
+[
+  {
+    "doi": "10.3390/en19061578",
+    "title": "Low-Carbon Economic Dispatch and Settable Incentive-Based Demand Response for Integrated Electro–Heat–Hydrogen Energy Systems Based on Safety Transformer–PPO",
+    "date": [
+      2026,
+      3,
+      23
+    ],
+    "relevance": 4
+  },
+  {
+    "doi": "10.3390/en19010140",
+    "title": "Research on a Low-Carbon Economic Dispatch Model and Control Strategy for Multi-Zone Hydrogen Hybrid Integrated Energy Systems",
+    "date": [
+      2025,
+      12,
+      26
+    ],
+    "relevance": 4
+  },
+  {
+    "doi": "10.3390/en19092234",
+    "title": "Multi-Objective Optimal Dispatch of Integrated Energy Systems Under Tiered Carbon Pricing: From Economic Arbitrage to Carbon Buffering",
+    "date": [
+      2026,
+      5,
+      5
+    ],
+    "relevance": 3
+  },
+  {
+    "doi": "10.3390/en18082014",
+    "title": "Frequency-Constrained Economic Dispatch of Microgrids Considering Frequency Response Performance",
+    "date": [
+      2025,
+      4,
+      14
+    ],
+    "relevance": 3
+  },
+  {
+    "doi": "10.3390/en19020545",
+    "title": "Incorporating Renewable Generation Uncertainty Into Multi-Objective Dispatch Optimization",
+    "date": [
+      2026,
+      1,
+      21
+    ],
+    "relevance": 2
+  },
+  {
+    "doi": "10.3390/en19010012",
+    "title": "An Optimal Dispatch Method for Power Systems with High Penetration of Renewable Power and CHP Units Utilizing the Combined GA and PSO Algorithm",
+    "date": [
+      2025,
+      12,
+      19
+    ],
+    "relevance": 2
+  },
+  {
+    "doi": "10.3390/en18030478",
+    "title": "Enhanced COVID-19 Optimization Algorithm for Solving Multi-Objective Optimal Power Flow Problems with Uncertain Renewable Energy Sources: A Case Study of the Iraqi High-Voltage Grid",
+    "date": [
+      2025,
+      1,
+      22
+    ],
+    "relevance": 2
+  },
+  {
+    "doi": "10.3390/en19112570",
+    "title": "Coordinated Optimal Dispatch of Distribution Networks and Aggregated Customer-Side Flexible Resources",
+    "date": [
+      2026,
+      5,
+      26
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en19061425",
+    "title": "Review of Degradation Models of Battery Energy Storage for Potential Integration into Unit Commitment Problems",
+    "date": [
+      2026,
+      3,
+      12
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en18246516",
+    "title": "Robust Optimal Dispatch of Microgrid Considering Flexible Demand-Side",
+    "date": [
+      2025,
+      12,
+      12
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en18215581",
+    "title": "Distributed Hierarchical Control with Cost Optimization and Priority-Based Dispatch for Workplace EV Charging: A Field Study",
+    "date": [
+      2025,
+      10,
+      23
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en18174723",
+    "title": "Deep Neural Network-Based Optimal Power Flow for Active Distribution Systems with High Photovoltaic Penetration",
+    "date": [
+      2025,
+      9,
+      4
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en18174498",
+    "title": "Enhancing Renewable Energy Integration via Robust Multi-Energy Dispatch: A Wind–PV–Hydrogen Storage Case Study with Spatiotemporal Uncertainty Quantification",
+    "date": [
+      2025,
+      8,
+      24
+    ],
+    "relevance": 0
+  },
+  {
+    "doi": "10.3390/en18020265",
+    "title": "Simulation Results of a Thermal Power Dispatch System from a Generic Pressurized Water Reactor in Normal and Abnormal Operating Conditions",
+    "date": [
+      2025,
+      1,
+      9
+    ],
+    "relevance": 0
+  }
+]

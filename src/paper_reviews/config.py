@@ -28,6 +28,7 @@ class RubricDimension:
     enabled: bool = True
     strictness: float = 1.0        # multiplier; >1 = harsher
     agent: str = ""                # which reviewer agent handles it (defaults to key)
+    risk_weight: float = 0.0       # normalized RRI weight for THIS journal (Σ over dims ≈ 1)
 
 
 @dataclass
@@ -41,11 +42,31 @@ class JournalProfile:
     dimensions: list[RubricDimension] = field(default_factory=list)
     policies: dict[str, Any] = field(default_factory=dict)              # AI use, ethics, length
     exemplars: list[dict] = field(default_factory=list)                # few-shot anchors
+    decision_model: str = "tiered"     # "binary" (IEEE Access) | "tiered" (MDPI accept/minor/major/reject)
+    hard_gates: list[dict] = field(default_factory=list)               # binary one-veto rules (IEEE Access)
+    accept_rri_stats: dict[str, Any] = field(default_factory=dict)     # empirical accept distribution (calibration)
+    acceptance_profile: str = ""        # filename under config/journals/ with distilled accept profile
     extra: dict[str, Any] = field(default_factory=dict)
 
     @property
     def enabled_dimensions(self) -> list[RubricDimension]:
         return [d for d in self.dimensions if d.enabled]
+
+    def acceptance_profile_text(self, max_chars: int = 2500) -> str:
+        """Distilled 'what this venue actually accepts' note, injected into reviews."""
+        if not self.acceptance_profile:
+            return ""
+        p = JOURNALS_DIR / self.acceptance_profile
+        if not p.is_file():
+            return ""
+        return p.read_text(encoding="utf-8")[:max_chars]
+
+    def risk_weights(self) -> dict[str, float]:
+        """Normalized per-dimension RRI weight vector (falls back to ``weight``)."""
+        dims = self.enabled_dimensions
+        raw = {d.key: (d.risk_weight if d.risk_weight > 0 else d.weight) for d in dims}
+        total = sum(raw.values()) or 1.0
+        return {k: v / total for k, v in raw.items()}
 
 
 def load_journal(venue: str) -> JournalProfile:
@@ -66,6 +87,7 @@ def load_journal(venue: str) -> JournalProfile:
             enabled=bool(d.get("enabled", True)),
             strictness=float(d.get("strictness", 1.0)),
             agent=d.get("agent", d["key"]),
+            risk_weight=float(d.get("risk_weight", 0.0)),
         ))
 
     return JournalProfile(
@@ -78,6 +100,10 @@ def load_journal(venue: str) -> JournalProfile:
         dimensions=dims,
         policies=data.get("policies", {}) or {},
         exemplars=data.get("exemplars", []) or [],
+        decision_model=data.get("decision_model", "tiered"),
+        hard_gates=data.get("hard_gates", []) or [],
+        accept_rri_stats=data.get("accept_rri_stats", {}) or {},
+        acceptance_profile=data.get("acceptance_profile", "") or "",
         extra=data.get("extra", {}) or {},
     )
 

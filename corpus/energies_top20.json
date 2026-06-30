@@ -1,0 +1,262 @@
+[
+  {
+    "doi": "10.3390/en19061578",
+    "title": "Low-Carbon Economic Dispatch and Settable Incentive-Based Demand Response for Integrated Electro–Heat–Hydrogen Energy Systems Based on Safety Transformer–PPO",
+    "date": [
+      2026,
+      3,
+      23
+    ],
+    "relevance": 4,
+    "url": "https://doi.org/10.3390/en19061578",
+    "article_url": "https://www.mdpi.com/1996-1073/19/6/1578",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/6/1578/pdf"
+  },
+  {
+    "doi": "10.3390/en19010140",
+    "title": "Research on a Low-Carbon Economic Dispatch Model and Control Strategy for Multi-Zone Hydrogen Hybrid Integrated Energy Systems",
+    "date": [
+      2025,
+      12,
+      26
+    ],
+    "relevance": 4,
+    "url": "https://doi.org/10.3390/en19010140",
+    "article_url": "https://www.mdpi.com/1996-1073/19/1/140",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/1/140/pdf"
+  },
+  {
+    "doi": "10.3390/en19092234",
+    "title": "Multi-Objective Optimal Dispatch of Integrated Energy Systems Under Tiered Carbon Pricing: From Economic Arbitrage to Carbon Buffering",
+    "date": [
+      2026,
+      5,
+      5
+    ],
+    "relevance": 3,
+    "url": "https://doi.org/10.3390/en19092234",
+    "article_url": "https://www.mdpi.com/1996-1073/19/9/2234",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/9/2234/pdf"
+  },
+  {
+    "doi": "10.3390/en18082014",
+    "title": "Frequency-Constrained Economic Dispatch of Microgrids Considering Frequency Response Performance",
+    "date": [
+      2025,
+      4,
+      14
+    ],
+    "relevance": 3,
+    "url": "https://doi.org/10.3390/en18082014",
+    "article_url": "https://www.mdpi.com/1996-1073/18/8/2014",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/8/2014/pdf"
+  },
+  {
+    "doi": "10.3390/en17215427",
+    "title": "A Day-Ahead Economic Dispatch Method for Renewable Energy Systems Considering Flexibility Supply and Demand Balancing Capabilities",
+    "date": [
+      2024,
+      10,
+      30
+    ],
+    "relevance": 3,
+    "url": "https://doi.org/10.3390/en17215427",
+    "article_url": "https://www.mdpi.com/1996-1073/17/21/5427",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/21/5427/pdf"
+  },
+  {
+    "doi": "10.3390/en17112453",
+    "title": "Multi-Regional Integrated Energy Economic Dispatch Considering Renewable Energy Uncertainty and Electric Vehicle Charging Demand Based on Dynamic Robust Optimization",
+    "date": [
+      2024,
+      5,
+      21
+    ],
+    "relevance": 3,
+    "url": "https://doi.org/10.3390/en17112453",
+    "article_url": "https://www.mdpi.com/1996-1073/17/11/2453",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/11/2453/pdf"
+  },
+  {
+    "doi": "10.3390/en17030550",
+    "title": "Economic Dispatch Optimization Strategies and Problem Formulation: A Comprehensive Review",
+    "date": [
+      2024,
+      1,
+      23
+    ],
+    "relevance": 3,
+    "url": "https://doi.org/10.3390/en17030550",
+    "article_url": "https://www.mdpi.com/1996-1073/17/3/550",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/3/550/pdf"
+  },
+  {
+    "doi": "10.3390/en19020545",
+    "title": "Incorporating Renewable Generation Uncertainty Into Multi-Objective Dispatch Optimization",
+    "date": [
+      2026,
+      1,
+      21
+    ],
+    "relevance": 2,
+    "url": "https://doi.org/10.3390/en19020545",
+    "article_url": "https://www.mdpi.com/1996-1073/19/2/545",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/2/545/pdf"
+  },
+  {
+    "doi": "10.3390/en19010012",
+    "title": "An Optimal Dispatch Method for Power Systems with High Penetration of Renewable Power and CHP Units Utilizing the Combined GA and PSO Algorithm",
+    "date": [
+      2025,
+      12,
+      19
+    ],
+    "relevance": 2,
+    "url": "https://doi.org/10.3390/en19010012",
+    "article_url": "https://www.mdpi.com/1996-1073/19/1/12",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/1/12/pdf"
+  },
+  {
+    "doi": "10.3390/en18030478",
+    "title": "Enhanced COVID-19 Optimization Algorithm for Solving Multi-Objective Optimal Power Flow Problems with Uncertain Renewable Energy Sources: A Case Study of the Iraqi High-Voltage Grid",
+    "date": [
+      2025,
+      1,
+      22
+    ],
+    "relevance": 2,
+    "url": "https://doi.org/10.3390/en18030478",
+    "article_url": "https://www.mdpi.com/1996-1073/18/3/478",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/3/478/pdf"
+  },
+  {
+    "doi": "10.3390/en18010018",
+    "title": "Leveraging Harris Hawks Optimization for Enhanced Multi-Objective Optimal Power Flow in Complex Power Systems",
+    "date": [
+      2024,
+      12,
+      24
+    ],
+    "relevance": 2,
+    "url": "https://doi.org/10.3390/en18010018",
+    "article_url": "https://www.mdpi.com/1996-1073/18/1/18",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/1/18/pdf"
+  },
+  {
+    "doi": "10.3390/en17246376",
+    "title": "Multi-Objective Optimal Scheduling for Microgrids—Improved Goose Algorithm",
+    "date": [
+      2024,
+      12,
+      18
+    ],
+    "relevance": 2,
+    "url": "https://doi.org/10.3390/en17246376",
+    "article_url": "https://www.mdpi.com/1996-1073/17/24/6376",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/24/6376/pdf"
+  },
+  {
+    "doi": "10.3390/en17184705",
+    "title": "Integrated Energy System Dispatch Considering Carbon Trading Mechanisms and Refined Demand Response for Electricity, Heat, and Gas",
+    "date": [
+      2024,
+      9,
+      21
+    ],
+    "relevance": 1,
+    "url": "https://doi.org/10.3390/en17184705",
+    "article_url": "https://www.mdpi.com/1996-1073/17/18/4705",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/18/4705/pdf"
+  },
+  {
+    "doi": "10.3390/en17122987",
+    "title": "Hybrid Energy Storage System Dispatch Optimization for Cost and Environmental Impact Analysis",
+    "date": [
+      2024,
+      6,
+      17
+    ],
+    "relevance": 1,
+    "url": "https://doi.org/10.3390/en17122987",
+    "article_url": "https://www.mdpi.com/1996-1073/17/12/2987",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/12/2987/pdf"
+  },
+  {
+    "doi": "10.3390/en17112770",
+    "title": "Economic Optimal Scheduling of Integrated Energy System Considering Wind–Solar Uncertainty and Power to Gas and Carbon Capture and Storage",
+    "date": [
+      2024,
+      6,
+      5
+    ],
+    "relevance": 1,
+    "url": "https://doi.org/10.3390/en17112770",
+    "article_url": "https://www.mdpi.com/1996-1073/17/11/2770",
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/11/2770/pdf"
+  },
+  {
+    "doi": "10.3390/en19112570",
+    "title": "Coordinated Optimal Dispatch of Distribution Networks and Aggregated Customer-Side Flexible Resources",
+    "date": [
+      2026,
+      5,
+      26
+    ],
+    "relevance": 0,
+    "url": "https://doi.org/10.3390/en19112570",
+    "article_url": "https://www.mdpi.com/1996-1073/19/11/2570",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/11/2570/pdf"
+  },
+  {
+    "doi": "10.3390/en19061425",
+    "title": "Review of Degradation Models of Battery Energy Storage for Potential Integration into Unit Commitment Problems",
+    "date": [
+      2026,
+      3,
+      12
+    ],
+    "relevance": 0,
+    "url": "https://doi.org/10.3390/en19061425",
+    "article_url": "https://www.mdpi.com/1996-1073/19/6/1425",
+    "pdf_url": "https://www.mdpi.com/1996-1073/19/6/1425/pdf"
+  },
+  {
+    "doi": "10.3390/en18246516",
+    "title": "Robust Optimal Dispatch of Microgrid Considering Flexible Demand-Side",
+    "date": [
+      2025,
+      12,
+      12
+    ],
+    "relevance": 0,
+    "url": "https://doi.org/10.3390/en18246516",
+    "article_url": "https://www.mdpi.com/1996-1073/18/24/6516",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/24/6516/pdf"
+  },
+  {
+    "doi": "10.3390/en18215581",
+    "title": "Distributed Hierarchical Control with Cost Optimization and Priority-Based Dispatch for Workplace EV Charging: A Field Study",
+    "date": [
+      2025,
+      10,
+      23
+    ],
+    "relevance": 0,
+    "url": "https://doi.org/10.3390/en18215581",
+    "article_url": "https://www.mdpi.com/1996-1073/18/21/5581",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/21/5581/pdf"
+  },
+  {
+    "doi": "10.3390/en18174723",
+    "title": "Deep Neural Network-Based Optimal Power Flow for Active Distribution Systems with High Photovoltaic Penetration",
+    "date": [
+      2025,
+      9,
+      4
+    ],
+    "relevance": 0,
+    "url": "https://doi.org/10.3390/en18174723",
+    "article_url": "https://www.mdpi.com/1996-1073/18/17/4723",
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/17/4723/pdf"
+  }
+]

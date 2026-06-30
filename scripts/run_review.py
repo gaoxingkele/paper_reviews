@@ -20,20 +20,27 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from paper_reviews.config import list_journals, load_journal      # noqa: E402
 from paper_reviews.ingest import load_paper                       # noqa: E402
-from paper_reviews.orchestrator import Orchestrator               # noqa: E402
-from paper_reviews.report import render_markdown                  # noqa: E402
+from paper_reviews.orchestrator import (Orchestrator,             # noqa: E402
+                                        CrossJournalOrchestrator)
+from paper_reviews.report import (render_markdown,                # noqa: E402
+                                  render_cross_journal_markdown)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Multi-agent paper review")
     ap.add_argument("manuscript", help="path to .tex/.md/.txt/.pdf")
-    ap.add_argument("--venue", required=True, help=f"one of: {', '.join(list_journals()) or '(none yet)'}")
+    ap.add_argument("--venue", help=f"single venue: {', '.join(list_journals()) or '(none yet)'}")
+    ap.add_argument("--venues", help="comma-separated venues for cross-journal risk matrix "
+                                     "(e.g. ieee_access,mdpi_energies,mdpi_electronics,mdpi_applied_sciences)")
     ap.add_argument("--no-verify", action="store_true", help="skip adversarial verification")
     ap.add_argument("--no-critic", action="store_true", help="skip review self-critique")
     ap.add_argument("--parallel", type=int, default=4)
     ap.add_argument("--out", default=None)
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args()
+
+    if not args.venue and not args.venues:
+        ap.error("provide --venue <v> or --venues a,b,c")
 
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,
@@ -43,6 +50,28 @@ def main() -> int:
     print(f"[ingest] {paper.paper_id}: '{paper.title[:60]}' "
           f"({paper.source_format}, {len(paper.sections)} sections)")
 
+    out_dir = ROOT / "output"
+    out_dir.mkdir(exist_ok=True)
+
+    if args.venues:
+        venues = [v.strip() for v in args.venues.split(",") if v.strip()]
+        cj = CrossJournalOrchestrator(venues,
+                                      run_verification=not args.no_verify,
+                                      run_critic=not args.no_critic,
+                                      parallel=args.parallel).review(paper)
+        md = render_cross_journal_markdown(cj)
+        tag = "x_" + "_".join(venues)[:40]
+        out_md = Path(args.out) if args.out else out_dir / f"{paper.paper_id}__{tag}.md"
+        out_md.write_text(md, encoding="utf-8")
+        out_md.with_suffix(".json").write_text(
+            json.dumps(asdict(cj), ensure_ascii=False, indent=2, default=str),
+            encoding="utf-8")
+        print("[done] cross-journal RRI: " +
+              ", ".join(f"{r.venue}={r.rri}({r.tier})" for r in cj.risks))
+        print(f"[done] recommended venue: {cj.recommended_venue}")
+        print(f"[out] {out_md}")
+        return 0
+
     orch = Orchestrator(args.venue,
                         run_verification=not args.no_verify,
                         run_critic=not args.no_critic,
@@ -50,8 +79,6 @@ def main() -> int:
     rep = orch.review(paper)
 
     md = render_markdown(rep, load_journal(args.venue))
-    out_dir = ROOT / "output"
-    out_dir.mkdir(exist_ok=True)
     out_md = Path(args.out) if args.out else out_dir / f"{paper.paper_id}__{args.venue}.md"
     out_md.write_text(md, encoding="utf-8")
     out_json = out_md.with_suffix(".json")
@@ -59,8 +86,9 @@ def main() -> int:
                                    default=str), encoding="utf-8")
 
     mr = rep.meta_review
+    rri = rep.risk.rri if rep.risk else "n/a"
     print(f"[done] recommendation={mr.recommendation if mr else 'n/a'} "
-          f"score={mr.overall_score if mr else 'n/a'} "
+          f"score={mr.overall_score if mr else 'n/a'} RRI={rri} "
           f"human_review={mr.needs_human_review if mr else 'n/a'}")
     print(f"[out] {out_md}")
     return 0

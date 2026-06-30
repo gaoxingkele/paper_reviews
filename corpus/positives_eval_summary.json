@@ -1,0 +1,275 @@
+[
+  {
+    "name": "en17030550",
+    "rri": 32,
+    "tier": "中",
+    "pred": "minor_or_major",
+    "rec": "major_revision",
+    "score": 5.0,
+    "dims": {
+      "novelty": 2.88,
+      "soundness": 0.0,
+      "experiments": 0.0,
+      "reproducibility": 0.0,
+      "related_work": 0.0,
+      "clarity": 2.85,
+      "ethics": 1.95
+    }
+  },
+  {
+    "name": "en17112453",
+    "rri": 68,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.775,
+      "soundness": 2.925,
+      "experiments": 2.85,
+      "reproducibility": 2.85,
+      "related_work": 2.775,
+      "clarity": 2.775,
+      "ethics": 1.85
+    }
+  },
+  {
+    "name": "en17112770",
+    "rri": 49,
+    "tier": "中",
+    "pred": "minor_or_major",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 2.925,
+      "experiments": 2.85,
+      "reproducibility": 0.0,
+      "related_work": 0.0,
+      "clarity": 2.97,
+      "ethics": 0.0
+    }
+  },
+  {
+    "name": "en17122987",
+    "rri": 53,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.2,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 2.85,
+      "experiments": 0.0,
+      "reproducibility": 2.925,
+      "related_work": 0.0,
+      "clarity": 2.775,
+      "ethics": 1.8
+    }
+  },
+  {
+    "name": "en17184705",
+    "rri": 14,
+    "tier": "低",
+    "pred": "accept_or_minor",
+    "rec": "minor_revision",
+    "score": 6.0,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 0.0,
+      "experiments": 0.0,
+      "reproducibility": 0.0,
+      "related_work": 0.0,
+      "clarity": 0.0,
+      "ethics": 0.0
+    }
+  },
+  {
+    "name": "en17215427",
+    "rri": 68,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 2.925,
+      "experiments": 2.925,
+      "reproducibility": 2.97,
+      "related_work": 3.9,
+      "clarity": 2.925,
+      "ethics": 0.0
+    }
+  },
+  {
+    "name": "en17246376",
+    "rri": 51,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 3.5,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 0.0,
+      "experiments": 0.0,
+      "reproducibility": 2.925,
+      "related_work": 2.925,
+      "clarity": 2.925,
+      "ethics": 2.775
+    }
+  },
+  {
+    "name": "en18010018",
+    "rri": null,
+    "tier": null,
+    "pred": null,
+    "rec": null,
+    "score": null,
+    "dims": {}
+  },
+  {
+    "name": "en18030478",
+    "rri": 68,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 2.775,
+      "experiments": 2.85,
+      "reproducibility": 2.925,
+      "related_work": 2.775,
+      "clarity": 2.775,
+      "ethics": 1.85
+    }
+  },
+  {
+    "name": "en18082014",
+    "rri": 55,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 5.5,
+    "dims": {
+      "novelty": 2.775,
+      "soundness": 2.85,
+      "experiments": 1.85,
+      "reproducibility": 1.9,
+      "related_work": 1.85,
+      "clarity": 1.85,
+      "ethics": 1.6
+    }
+  },
+  {
+    "name": "en18174723",
+    "rri": 65,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.775,
+      "soundness": 2.775,
+      "experiments": 2.925,
+      "reproducibility": 2.925,
+      "related_work": 1.85,
+      "clarity": 2.775,
+      "ethics": 1.7
+    }
+  },
+  {
+    "name": "en18215581",
+    "rri": 55,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 5.0,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 2.85,
+      "experiments": 2.925,
+      "reproducibility": 1.95,
+      "related_work": 0.0,
+      "clarity": 1.9,
+      "ethics": 1.85
+    }
+  },
+  {
+    "name": "en18246516",
+    "rri": 69,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 5.0,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 2.7,
+      "experiments": 2.85,
+      "reproducibility": 2.925,
+      "related_work": 2.85,
+      "clarity": 2.925,
+      "ethics": 1.9
+    }
+  },
+  {
+    "name": "en19010012",
+    "rri": 40,
+    "tier": "中",
+    "pred": "minor_or_major",
+    "rec": "major_revision",
+    "score": 4.8,
+    "dims": {
+      "novelty": 3.9,
+      "soundness": 0.0,
+      "experiments": 2.925,
+      "reproducibility": 0.0,
+      "related_work": 2.925,
+      "clarity": 0.0,
+      "ethics": 1.85
+    }
+  },
+  {
+    "name": "en19020545",
+    "rri": 50,
+    "tier": "中",
+    "pred": "minor_or_major",
+    "rec": "major_revision",
+    "score": 5.0,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 1.9,
+      "experiments": 0.0,
+      "reproducibility": 0.0,
+      "related_work": 2.925,
+      "clarity": 2.775,
+      "ethics": 2.85
+    }
+  },
+  {
+    "name": "en19061425",
+    "rri": 68,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 2.925,
+      "experiments": 2.85,
+      "reproducibility": 1.9,
+      "related_work": 2.925,
+      "clarity": 2.985,
+      "ethics": 1.9
+    }
+  },
+  {
+    "name": "en19061578",
+    "rri": null,
+    "tier": null,
+    "pred": null,
+    "rec": null,
+    "score": null,
+    "dims": {}
+  }
+]

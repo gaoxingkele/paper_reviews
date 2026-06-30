@@ -10,6 +10,7 @@
 | 日期 | 条目 | 一句话 |
 |---|---|---|
 | 2026-06-27 | [[2026-06-27_multi-agent-review-architecture]] | 为何选"期刊画像驱动 + 独立维度评审 + 对抗核验 + inclusive 聚合"而非单 LLM 打分或全仿真讨论 |
+| 2026-06-28 | [[2026-06-28_rri-risk-scoring-and-hard-gate]] | 引入用户 review_simulator 的 RRI 录用风险指数 + IEEE Access 二元一票否决 + 跨刊风险矩阵 + ROI 改进排序 |
 
 ## 方法论说明
 - 引入外部思想并据此改了架构 → 新增/更新一篇

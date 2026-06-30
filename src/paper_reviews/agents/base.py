@@ -9,7 +9,7 @@ import logging
 import re
 from dataclasses import dataclass, field
 
-from ..llm_client import chat, ChatResult
+from ..llm_client import chat, ChatResult, LLMCallError
 
 logger = logging.getLogger("paper_reviews.agent")
 
@@ -41,6 +41,31 @@ class AgentSpec:
     temperature: float = 0.3
     voters: int = 1                 # >1 = multi-sample / multi-provider voting
     extra_providers: list[str] = field(default_factory=list)
+    fallbacks: list[str] = field(default_factory=list)  # tried when a provider's chain is exhausted
+
+
+def _chat_with_fallback(providers: list[str], system_prompt: str, user_prompt: str,
+                        *, who: str, **kw) -> ChatResult:
+    """Call the first healthy provider; on LLMCallError move to the next.
+
+    Implements the cross-provider degradation the llm_client docstring delegates
+    to the agent layer: a provider's whole model chain may be down (gateway
+    flakiness, model not provisioned), so we fall through to a healthy one rather
+    than dropping the dimension entirely.
+    """
+    last_err: Exception | None = None
+    seen: set[str] = set()
+    for provider in providers:
+        p = (provider or "").strip().lower()
+        if not p or p in seen:
+            continue
+        seen.add(p)
+        try:
+            return chat(p, system_prompt, user_prompt, **kw)
+        except LLMCallError as e:
+            last_err = e
+            logger.warning("[%s] provider %s unavailable; falling back: %s", who, p, e)
+    raise LLMCallError(f"[{who}] all providers failed: {last_err}")
 
 
 class Agent:
@@ -50,10 +75,11 @@ class Agent:
 
     def run(self, system_prompt: str, user_prompt: str,
             *, response_json: bool = True) -> tuple[dict, ChatResult]:
-        res = chat(
-            self.spec.provider,
+        res = _chat_with_fallback(
+            [self.spec.provider, *self.spec.fallbacks],
             system_prompt,
             user_prompt,
+            who=self.name,
             reasoning=self.spec.reasoning,
             temperature=self.spec.temperature,
             response_json=response_json,
@@ -67,11 +93,14 @@ class Agent:
         rounds = max(self.spec.voters, len(providers))
         for i in range(rounds):
             provider = providers[i % len(providers)]
+            # each voter prefers its assigned provider, then the shared fallbacks
+            chain = [provider, *self.spec.fallbacks]
             try:
-                res = chat(provider, system_prompt, user_prompt,
-                           reasoning=self.spec.reasoning,
-                           temperature=self.spec.temperature + 0.1 * i,
-                           response_json=True)
+                res = _chat_with_fallback(chain, system_prompt, user_prompt,
+                                          who=f"{self.name}#voter{i}",
+                                          reasoning=self.spec.reasoning,
+                                          temperature=self.spec.temperature + 0.1 * i,
+                                          response_json=True)
                 ballots.append((parse_json(res.text), res))
             except Exception as e:  # noqa: BLE001
                 logger.warning("[%s] voter %d (%s) failed: %s", self.name, i, provider, e)
