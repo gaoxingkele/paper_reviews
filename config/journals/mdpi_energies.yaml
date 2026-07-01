@@ -25,13 +25,13 @@ score_distribution:
 # 已录用论文在本系统的 RRI 中位 55、区间 [14,69]——说明绝对尺度偏严：
 # RRI ≤ 55 即与多数已录用论文相当（accept/minor 区间）。scoring 用此分布给出"接受分布百分位"。
 accept_rri_stats:
-  n: 15
-  median: 55
-  p25: 49
+  n: 20                 # 15 Claude + 5 DeepSeek 评审的已发表 Energies 正样本
+  median: 61.5
+  p25: 51
   p75: 68
   min: 14
-  max: 69
-  distribution: [14, 32, 40, 49, 50, 51, 53, 55, 55, 65, 68, 68, 68, 68, 69]
+  max: 76
+  distribution: [14, 32, 40, 49, 50, 51, 53, 55, 55, 58, 65, 67, 68, 68, 68, 68, 69, 72, 73, 76]
 acceptance_profile: mdpi_energies_accepted_profile.md
 
 dimensions:

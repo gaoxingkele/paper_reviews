@@ -1,11 +1,11 @@
 {
-  "n": 15,
-  "rri_mean": 53.7,
-  "rri_median": 55,
-  "rri_p25": 49,
+  "n": 20,
+  "rri_mean": 57.5,
+  "rri_median": 61.5,
+  "rri_p25": 51,
   "rri_p75": 68,
   "rri_min": 14,
-  "rri_max": 69,
+  "rri_max": 76,
   "rri_sorted": [
     14,
     32,
@@ -16,20 +16,25 @@
     53,
     55,
     55,
+    58,
     65,
+    67,
     68,
     68,
     68,
     68,
-    69
+    69,
+    72,
+    73,
+    76
   ],
   "dim_means": {
-    "novelty": 2.93,
-    "soundness": 2.03,
-    "experiments": 1.85,
-    "reproducibility": 1.75,
-    "related_work": 1.85,
-    "clarity": 2.35,
-    "ethics": 1.59
+    "novelty": 2.87,
+    "soundness": 2.14,
+    "experiments": 2.06,
+    "reproducibility": 2.16,
+    "related_work": 2.1,
+    "clarity": 2.48,
+    "ethics": 1.79
   }
 }

@@ -120,12 +120,20 @@
   },
   {
     "name": "en18010018",
-    "rri": null,
-    "tier": null,
-    "pred": null,
-    "rec": null,
-    "score": null,
-    "dims": {}
+    "rri": 76,
+    "tier": "高",
+    "pred": "major_to_reject",
+    "rec": "major_revision",
+    "score": 4.0,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 2.85,
+      "experiments": 2.85,
+      "reproducibility": 4.0,
+      "related_work": 2.85,
+      "clarity": 2.985,
+      "ethics": 2.85
+    }
   },
   {
     "name": "en18030478",
@@ -230,6 +238,23 @@
     }
   },
   {
+    "name": "en19010140",
+    "rri": 73,
+    "tier": "高",
+    "pred": "major_to_reject",
+    "rec": "major_revision",
+    "score": 4.5,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 2.85,
+      "experiments": 2.85,
+      "reproducibility": 4.0,
+      "related_work": 2.85,
+      "clarity": 2.85,
+      "ethics": 1.9
+    }
+  },
+  {
     "name": "en19020545",
     "rri": 50,
     "tier": "中",
@@ -265,11 +290,53 @@
   },
   {
     "name": "en19061578",
-    "rri": null,
-    "tier": null,
-    "pred": null,
-    "rec": null,
-    "score": null,
-    "dims": {}
+    "rri": 58,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 6.0,
+    "dims": {
+      "novelty": 1.9,
+      "soundness": 1.9,
+      "experiments": 1.9,
+      "reproducibility": 3.0,
+      "related_work": 2.85,
+      "clarity": 2.85,
+      "ethics": 2.0
+    }
+  },
+  {
+    "name": "en19092234",
+    "rri": 72,
+    "tier": "高",
+    "pred": "major_to_reject",
+    "rec": "major_revision",
+    "score": 5.0,
+    "dims": {
+      "novelty": 2.85,
+      "soundness": 2.85,
+      "experiments": 2.85,
+      "reproducibility": 3.0,
+      "related_work": 2.925,
+      "clarity": 2.85,
+      "ethics": 2.85
+    }
+  },
+  {
+    "name": "en19112570",
+    "rri": 67,
+    "tier": "偏高",
+    "pred": "major_revision",
+    "rec": "major_revision",
+    "score": 5.5,
+    "dims": {
+      "novelty": 2.925,
+      "soundness": 1.9,
+      "experiments": 2.925,
+      "reproducibility": 3.0,
+      "related_work": 2.85,
+      "clarity": 2.85,
+      "ethics": 2.4
+    }
   }
 ]

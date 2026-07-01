@@ -59,9 +59,20 @@ https://github.com/gaoxingkele/paper_reviews
 - 工具：scripts/{text_sink,clean_corpus,run_positives_eval,run_eval_remaining,distill_positives,
   build_distillation,extract_acceptance_profile}.py（最后一个需 LLM，待额度恢复跑更细画像）。
 
+## DeepSeek 直连补跑（2026-07-01，Cloubic 欠费时的备用通道）
+- Cloubic 账户欠费 → 改用直连 DeepSeek（.env DEEPSEEK_API_KEY, api.deepseek.com, deepseek-v4-flash）。
+  路由法：CLOUBIC_ROUTED_PROVIDERS 去掉 deepseek + PR_FORCE_PROVIDER=deepseek → 走直连绕开欠费。
+- 正样本补满 20 篇（15 Claude + 5 DeepSeek 补齐 en18010018/en19010140/en19061578/en19092234/en19112570，
+  DeepSeek 未复现桌面误拒）。更新 n=20：RRI 均值 57.5、中位 61.5、区间 [14,76]、**95% 判 major_revision**。
+  已更新 mdpi_energies.yaml accept_rri_stats(n=20)。
+- **P1 @ Energies RRI=62 = 已录用分布第 50 百分位（正好中位）→ 完全是典型可录用论文**。
+- P1 DeepSeek 全新校准评审：RRI=59、major、第60百分位（与 Claude 62 一致）→
+  中文 Word `output/P1__MDPI_Energies_审稿意见_中文_DeepSeek.docx`（含★校准结论）。
+- P2/P3 DeepSeek 跨刊（`output/P{2,3}_*__deepseek_cross.md`）：与 Claude 版一致——
+  IEEE Access reject / MDPI major_revision / 首选 mdpi_energies。跨模型互证稳健。
+
 ## 待办（优先级）
-0. (可选) 额度恢复后：跑 extract_acceptance_profile.py 出更细结构化画像；补跑 3 篇跳过的正样本；
-   用校准后 prompt 重跑 P1 看 RRI 是否下降（验证 strictness 校准效果）。
+0. (可选) 额度恢复后：跑 extract_acceptance_profile.py 出更细结构化画像；生成 P2/P3 中文 Word。
 1. CalibrationAgent 实装（rubric 分→目标刊分布去偏；缓解 severity 饱和）
 3. VerificationAgent 接 RAG 查新 / 代码沙箱执行（新颖性 + 经验性 claim 核验）
 4. 评测脚本：与人类一致性 MSE/MAE/Spearman、pairwise 排序准确率、Decision F1

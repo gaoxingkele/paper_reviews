@@ -1,44 +1,44 @@
 # 知识蒸馏报告 — MDPI Energies 正样本校准
 
-> 正样本 = 15 篇近年已发表（已过同行评审）的 Energies 经济/排放调度·优化论文。
+> 正样本 = 20 篇近年已发表（已过同行评审）的 Energies 经济/排放调度·优化论文。
 > 它们的共性 = Energies 的实际接受门槛；它们在本系统的评分 = 校准信号。
 
 ## 1. 校准信号（系统对正样本是否偏严）
 
-- 正样本 RRI：均值 **53.7**，中位 **55**，区间 [14, 69]（P25=49, P75=68）
-- AC 推荐分布：{'major_revision': 14, 'minor_revision': 1}
-- **14/15 篇被判 major/reject**——但它们全部已发表。说明系统【绝对尺度偏严】，需把 Energies 的尺度锚定到真实接受分布。
+- 正样本 RRI：均值 **57.5**，中位 **61.5**，区间 [14, 76]（P25=51, P75=68）
+- AC 推荐分布：{'major_revision': 19, 'minor_revision': 1}
+- **19/20 篇被判 major/reject**——但它们全部已发表。说明系统【绝对尺度偏严】，需把 Energies 的尺度锚定到真实接受分布。
 
 ### 各维度平均风险分（0–4，越高=系统越爱挑该维度）
 
 | 维度 | 正样本平均风险 |
 |---|---|
-| novelty | 2.93 |
-| soundness | 2.03 |
-| experiments | 1.85 |
-| reproducibility | 1.75 |
-| related_work | 1.85 |
-| clarity | 2.35 |
-| ethics | 1.59 |
+| novelty | 2.87 |
+| soundness | 2.14 |
+| experiments | 2.06 |
+| reproducibility | 2.16 |
+| related_work | 2.1 |
+| clarity | 2.48 |
+| ethics | 1.79 |
 
 novelty / clarity 在已发表论文上仍被打到偏高分 → 这两维是系统【过度严格】的主因，应在 Energies 下放松。
 
 ## 2. P1（你的 KE-NSGA-II）在接受分布中的位置
 
-- P1 对 Energies 的 RRI = **62**，处于已录用论文分布的 **第 60 百分位**。
-- 解读：**属于已录用论文的正常区间，并非离群高风险**（已发表论文中位 55，最高 69）。
+- P1 对 Energies 的 RRI = **62**，处于已录用论文分布的 **第 50 百分位**。
+- 解读：**属于已录用论文的正常区间，并非离群高风险**（已发表论文中位 61.5，最高 76）。
 - 即：之前'偏高/reject'是【绝对尺度】判断；按【真实接受尺度】，P1 与已发表论文相当。
 
 ## 3. 接受画像（已发表 Energies 论文的共性）
 
 ### 常见测试系统/算例
-ies×1515, microgrid×438, integrated energy system×132, real world×57, distribution network×46, ieee 30 bus×38, ieee 57 bus×27, 28 bus×23, ieee 118 bus×16, 57 bus×13, ieee 33 bus×11, micro grid×8
+ies×2012, microgrid×457, integrated energy system×262, distribution network×262, real world×72, ieee 30 bus×57, ieee 57 bus×27, 28 bus×23, ieee 118 bus×18, ieee 33 bus×16, 57 bus×15, micro grid×9
 
 ### 常见对比基线/求解器
-PSO×105, DE×82, SSA×59, GA×57, PARTICLE SWARM×45, MIXEDINTEGER×37, GENETIC ALGORITHM×24, REINFORCEMENT LEARNING×17, GWO×17, CPLEX×15, TLBO×14, GUROBI×12, DIFFERENTIAL EVOLUTION×10, MIXED INTEGER×9, WOA×9
+HHO×286, PSO×106, NSGAII×102, DE×82, SSA×73, MOPSO×72, PARTICLE SWARM×61, GA×57, MOEA/D×53, PPO×49, HARRIS HAWKS×47, MIXEDINTEGER×44, GENETIC ALGORITHM×42, TLBO×29, REINFORCEMENT LEARNING×26
 
-### 统计严谨性：10/15 篇含显著性检验/多次运行/方差等
-### 数据可用性声明：14/15 篇出现 data/code availability 字样
+### 统计严谨性：12/20 篇含显著性检验/多次运行/方差等
+### 数据可用性声明：19/20 篇出现 data/code availability 字样
 
 ### 审稿系统在这些已录用论文上仍认可的优点（节选，去重前 20 条）
 

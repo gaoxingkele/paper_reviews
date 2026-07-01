@@ -34,7 +34,8 @@ def translate_batch(items: list[str]) -> list[str]:
         user = ("下面是若干段英文，每段以一行标记 =====SEGk===== 开头。"
                 "请逐段翻译为简体中文，并用完全相同的标记输出，标记下一行起为该段译文。"
                 "不要输出标记和译文以外的任何内容。\n\n" + blocks)
-        res = chat("claude", SYS, user, temperature=0.1)
+        import os
+        res = chat(os.getenv("PR_TRANSLATE_PROVIDER", "claude"), SYS, user, temperature=0.1)
         # split the response on the SEG markers
         parts = _MARK_RE.split(res.text)
         # parts = [pre, idx0, text0, idx1, text1, ...]
@@ -60,6 +61,11 @@ def main() -> int:
 
     data = json.loads(Path(args.json).read_text(encoding="utf-8"))
     d = copy.deepcopy(data)
+    # adapt single-venue ReviewReport shape -> cross-journal shape the renderer expects
+    if "meta_reviews" not in d and d.get("meta_review") is not None:
+        d["meta_reviews"] = {args.venue: d["meta_review"]}
+    if "risks" not in d and d.get("risk") is not None:
+        d["risks"] = [d["risk"]]
     meta = (d.get("meta_reviews", {}) or {}).get(args.venue, {}) or {}
 
     # collect strings + remember where to put them back
