@@ -16,6 +16,9 @@ decision_threshold: 6.0
 # IEEE Access 是二元 accept/reject 模型（无大修缓冲），故 decision_model=binary，
 # 并启用一票否决硬门槛（见文件末 hard_gates）。RRI 与风险分档由 scoring.py 确定性计算。
 decision_model: binary
+# 接受画像：从 10 篇近年已发表 IEEE Access 电网故障/安全分析类论文蒸馏（见
+# ieee_access_accepted_profile.md），注入审稿 prompt 校准二元尺度（尤其对负面/非-SOTA 结论类）。
+acceptance_profile: ieee_access_accepted_profile.md
 score_distribution:
   accept_mean: 6.5
   reject_mean: 4.0

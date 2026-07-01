@@ -30,3 +30,6 @@ corpus/eval/
 # os
 .DS_Store
 Thumbs.db
+
+# raw abstracts (copyright)
+corpus/ieee_access_p2_abstracts.json

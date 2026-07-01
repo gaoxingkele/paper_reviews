@@ -199,7 +199,9 @@ def render_mdpi_review_docx(data: dict, venue: str, out_path: str | Path,
     rec = meta.get("recommendation") or "major_revision"
 
     venue_name = {"mdpi_energies": "Energies", "mdpi_electronics": "Electronics",
-                  "mdpi_applied_sciences": "Applied Sciences"}.get(venue, venue)
+                  "mdpi_applied_sciences": "Applied Sciences",
+                  "ieee_access": "IEEE Access"}.get(venue, venue)
+    is_mdpi = venue.startswith("mdpi")
 
     doc = Document()
     style = doc.styles["Normal"]
@@ -208,7 +210,10 @@ def render_mdpi_review_docx(data: dict, venue: str, out_path: str | Path,
 
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = title.add_run(L["report_title"].format(j=venue_name))
+    title_txt = (L["report_title"].format(j=venue_name) if is_mdpi
+                 else (f"{venue_name} — 审稿意见" if lang == "zh"
+                       else f"{venue_name} — Reviewer Report"))
+    r = title.add_run(title_txt)
     r.bold = True
     r.font.size = Pt(16)
 
@@ -223,7 +228,7 @@ def render_mdpi_review_docx(data: dict, venue: str, out_path: str | Path,
                                    pred=pred)
     meta_rows = [
         (L["m_manuscript"], manuscript_title or data.get("paper_id", "")),
-        (L["m_journal"], f"{venue_name} (MDPI)"),
+        (L["m_journal"], f"{venue_name} (MDPI)" if is_mdpi else venue_name),
         (L["m_rec"], rec_label.get(rec, rec)),
         (L["m_rri"], rri_text),
     ]
@@ -304,10 +309,31 @@ def render_mdpi_review_docx(data: dict, venue: str, out_path: str | Path,
             if f.get("fix_suggestion"):
                 p.add_run(" — " + f.get("fix_suggestion")).italic = True
 
-    # MDPI-specific reminders
+    # venue-specific reminders
     doc.add_paragraph()
-    _h(doc, L["s4"], size=11)
-    for n in L["notes"]:
+    if is_mdpi:
+        _h(doc, L["s4"], size=11)
+        notes = L["notes"]
+    else:
+        _h(doc, ("四、期刊专项提示（IEEE Access）" if lang == "zh"
+                 else "4. Journal-specific notes (IEEE Access)"), size=11)
+        notes = ([
+            "IEEE Access 为二元 accept/reject 模型，无大修缓冲——'差一点'即拒。审稿意见虽可列'大修级'建议，"
+            "但作者须在一轮内改到可录用水平。",
+            "官方红线（任一即拒）：英语语法硬伤、技术致命错误/结论与数据矛盾、含撤稿文献、与既往发表无可辨识差异、明显超 scope。",
+            "不要求高创新度，但必须 distinct from prior + 技术 sound + 证据充分支撑结论 + 与强基线公平对比 + 可复现。",
+            "对负面/非-SOTA 结论：IEEE Access 可接受，前提是技术正确且 distinct；关键在证明'该负面结论是有效假设下的稳健结论'"
+            "（多系统/多设置验证、排除伪负面），并明确其对领域的实用价值。",
+        ] if lang == "zh" else [
+            "IEEE Access is a binary accept/reject venue (no major-revision buffer).",
+            "Red lines (any → reject): fatal grammar, fatal technical error/claims contradicting data, "
+            "retracted refs, not distinct from prior work, out of scope.",
+            "Novelty need not be high, but the work must be distinct, technically sound, evidence-backed, "
+            "fairly compared to strong baselines, and reproducible.",
+            "Negative/non-SOTA results are acceptable if technically correct and distinct; prove the negative "
+            "conclusion is robust (multi-system/multi-setting, no false negative) and state its practical value.",
+        ])
+    for n in notes:
         doc.add_paragraph(n, style="List Bullet")
 
     out_path = Path(out_path)

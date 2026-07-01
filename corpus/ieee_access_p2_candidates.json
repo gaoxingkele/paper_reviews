@@ -1,0 +1,82 @@
+[
+  {
+    "doi": "10.1109/access.2026.3666293",
+    "title": "Contingency Analysis of Ethiopian Extra High Voltage Transmission Networks With Deep Neural Networks",
+    "date": [
+      2026
+    ],
+    "ml": 1
+  },
+  {
+    "doi": "10.1109/access.2026.3692243",
+    "title": "Multi-Objective Sizing of an Electric Aircraft Power System Under n-1 Contingency Constraints: Weight–Volume–Losses Trade-Offs",
+    "date": [
+      2026
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2026.3682240",
+    "title": "AI-Enhanced Wide-Area Traveling Wave-Based Fault Location Method for Transmission Networks With a Unified Power Flow Controller",
+    "date": [
+      2026
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2025.3650116",
+    "title": "A Novel Transfer Learning Strategy Based on Inception-ResNet+ 1D-CNN for DC–DC Converter Degradation Fault Diagnosis",
+    "date": [
+      2026
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2025.3555144",
+    "title": "Modeling Puerto Rico Grid’s Sequential Failures for Hurricanes Using Electric Grid Resilience &amp; Assessment System (EGRASS) Tool and Dynamic Contingency Analysis Tool (DCAT)",
+    "date": [
+      2025
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2024.3400686",
+    "title": "Floating, Production, Storage, and Offloading Unit: A Contingency Operating Mode Using Variable Frequency Drives",
+    "date": [
+      2024
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2024.3443917",
+    "title": "Detection and Location of Open Conductor Faults for Power Distribution Networks Using a Contingency Analysis Approach",
+    "date": [
+      2024
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2023.3322133",
+    "title": "Human-Centric Contingency Analysis Metrics for Evaluating Operator Performance and Trust",
+    "date": [
+      2023
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2023.3325626",
+    "title": "Stability Domain Analysis for Islanded Microgrid Considering N-1 Contingency",
+    "date": [
+      2023
+    ],
+    "ml": 0
+  },
+  {
+    "doi": "10.1109/access.2023.3306959",
+    "title": "Reliable Time Contingency Estimation Based on Adaptive Neuro-Fuzzy Inference System in Construction Projects",
+    "date": [
+      2023
+    ],
+    "ml": 0
+  }
+]
